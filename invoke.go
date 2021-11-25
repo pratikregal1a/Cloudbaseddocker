@@ -18,15 +18,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write(out)
 }
-func getImageFromFilePath(bournvita.png string) (image.Image, error) {
-    f, err := os.Open(bournvita.png)
-    if err != nil {
-        return nil, err
-    }
-//     defer f.Close()
-//     image, _, err := image.Decode(f)
-//     return image, err
-}
+// func getImageFromFilePath(bournvita.png string) (image.Image, error) {
+//     f, err := os.Open(bournvita.png)
+//     if err != nil {
+//         return nil, err
+//     }
+// //     defer f.Close()
+// //     image, _, err := image.Decode(f)
+// //     return image, err
+// }
 
 func main() {
 	http.HandleFunc("/", handler)
