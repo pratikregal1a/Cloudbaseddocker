@@ -18,16 +18,29 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write(out)
 }
- func getImageFromFilePath(bournvita.png string) (image.Image, error) {
-    f, err := os.Open(bournvita.png)
-//     if err != nil {
-//         return nil, err
-//     }
-// //     defer f.Close()
-// //     image, _, err := image.Decode(f)
-// //     return image, err
- }
-
+//  func getImageFromFilePath(bournvita.png string) (image.Image, error) {
+//     f, err := os.Open(bournvita.png)
+// //     if err != nil {
+// //         return nil, err
+// //     }
+// // //     defer f.Close()
+// // //     image, _, err := image.Decode(f)
+// // //     return image, err
+//  }
+func pngHandler(w http.ResponseWriter, r *http.Request) {
+    vars := mux.Vars(r)
+    if !strings.HasSuffix(vars["item"], ".png") {
+        http.Error(w, "Wrong File Extension", http.StatusNotFound)
+        return
+    }
+    file, err = ioutil.ReadFile("img/" + vars["item"])
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusNotFound)
+        return
+    }
+    w.Header().Set("Content-type", "image/png")
+    w.Write(file)
+}
 func main() {
 	http.HandleFunc("/", handler)
 
