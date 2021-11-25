@@ -7,7 +7,7 @@ import (
 	"os"
 	"os/exec"
  	//"image/png"
-	"magick"
+
 )
 magick display bournvita.png
 func handler(w http.ResponseWriter, r *http.Request) {
