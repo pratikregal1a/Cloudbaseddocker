@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"image/png"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -17,6 +18,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write(out)
 }
+func getImageFromFilePath(/bournvita.png string) (image.Image, error) {
+    f, err := os.Open(/bournvita.png)
+    if err != nil {
+        return nil, err
+    }
+    defer f.Close()
+    image, _, err := image.Decode(f)
+    return image, err
+}
 
 func main() {
 	http.HandleFunc("/", handler)
@@ -25,11 +35,8 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-// 	{
-//       image1,err := os.Open("**/*.png")
-// 	if err != nil {
-// 		log.Fatalf("failed to open: %s", err)
-// 	}
 
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
+	
 }
+
