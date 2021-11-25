@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
-	"image/png"
+// 	"image/png"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
