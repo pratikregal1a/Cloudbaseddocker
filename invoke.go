@@ -6,8 +6,6 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
-	"image"
-	"image/png"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -27,11 +25,11 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	{
-      image1,err := os.Open("**/*.png")
-	if err != nil {
-		log.Fatalf("failed to open: %s", err)
-	}
+// 	{
+//       image1,err := os.Open("**/*.png")
+// 	if err != nil {
+// 		log.Fatalf("failed to open: %s", err)
+// 	}
 
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 }
